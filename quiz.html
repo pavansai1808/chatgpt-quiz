@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome ChatGPT Prompts Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background: #45a049;
+        }
+        .result {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .result.correct {
+            color: green;
+        }
+        .result.incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Awesome ChatGPT Prompts Quiz</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p><strong>1. What is the role of the "Interviewer" prompt?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="a"> To write a resume for the user</label>
+                    <label><input type="radio" name="q1" value="b"> To ask interview questions for a specified position</label>
+                    <label><input type="radio" name="q1" value="c"> To prepare job descriptions</label>
+                    <label><input type="radio" name="q1" value="d"> To generate reports about job markets</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>2. In the "Act as an Excel Sheet" prompt, how does the AI respond to user instructions?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="a"> By performing calculations and explaining results</label>
+                    <label><input type="radio" name="q2" value="b"> By replying with only the updated table as text</label>
+                    <label><input type="radio" name="q2" value="c"> By creating graphical charts for data</label>
+                    <label><input type="radio" name="q2" value="d"> By generating 3D models of data</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>3. What is the purpose of the "Plagiarism Checker" prompt?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="a"> To rewrite text for better readability</label>
+                    <label><input type="radio" name="q3" value="b"> To identify sentences that are grammatically incorrect</label>
+                    <label><input type="radio" name="q3" value="c"> To ensure text is undetected by plagiarism checks</label>
+                    <label><input type="radio" name="q3" value="d"> To translate text into another language</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>4. Which of the following roles is designed to provide advice on stress management and building healthy habits?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="a"> Motivational Coach</label>
+                    <label><input type="radio" name="q4" value="b"> Life Coach</label>
+                    <label><input type="radio" name="q4" value="c"> Hypnotherapist</label>
+                    <label><input type="radio" name="q4" value="d"> Career Counselor</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p><strong>5. What is the function of the "Midjourney Prompt Generator"?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="a"> To provide visual illustrations for scientific research</label>
+                    <label><input type="radio" name="q5" value="b"> To create detailed prompts for generating creative AI images</label>
+                    <label><input type="radio" name="q5" value="c"> To translate text into artistic language</label>
+                    <label><input type="radio" name="q5" value="d"> To optimize website layouts</label>
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="checkAnswers()">Submit</button>
+
+            <div id="result" class="result"></div>
+        </form>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const correctAnswers = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'c',
+                q4: 'b',
+                q5: 'b'
+            };
+
+            let score = 0;
+            const form = document.getElementById('quizForm');
+            const resultDiv = document.getElementById('result');
+
+            for (const [question, answer] of Object.entries(correctAnswers)) {
+                const userAnswer = form.elements[question].value;
+                if (userAnswer === answer) {
+                    score++;
+                }
+            }
+
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = `You scored ${score} out of ${Object.keys(correctAnswers).length}`;
+            resultDiv.className = score === Object.keys(correctAnswers).length ? 'result correct' : 'result incorrect';
+        }
+    </script>
+</body>
+</html>
